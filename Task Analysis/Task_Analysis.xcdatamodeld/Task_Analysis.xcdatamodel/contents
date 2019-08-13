@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F203" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="StepsCoreData" representedClassName="StepsCoreData" syncable="YES" codeGenerationType="class"/>
-    <entity name="TaskAnalysesCoreData" representedClassName="TaskAnalysesCoreData" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="StepsCoreData" representedClassName="StepsCoreData" parentEntity="TaskAnalysisCoreData" syncable="YES" codeGenerationType="class"/>
+    <entity name="TaskAnalysisCoreData" representedClassName="TaskAnalysisCoreData" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="nextStepHighlighted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="skippedStepHighlighted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="steps" attributeType="String" syncable="YES"/>
+        <attribute name="stepPhotos" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="steps" attributeType="Transformable" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="StepsCoreData" positionX="-54" positionY="18" width="128" height="45"/>
-        <element name="TaskAnalysesCoreData" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="TaskAnalysisCoreData" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

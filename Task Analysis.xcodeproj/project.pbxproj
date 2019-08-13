@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9C19EF8122E26E60003B3061 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C19EF8022E26E60003B3061 /* ActionViewController.swift */; };
 		9C3EEAB222D534ED00032658 /* AddTaskAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3EEAB122D534ED00032658 /* AddTaskAnalysisViewController.swift */; };
+		9C7871572302F32B007DF1B3 /* TaskAnalysisCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7871562302F32B007DF1B3 /* TaskAnalysisCoreData+CoreDataProperties.swift */; };
+		9C80D5B322E4B59100D70497 /* ActionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80D5B222E4B59100D70497 /* ActionTableViewController.swift */; };
+		9C80D5B622E519D700D70497 /* TaskAnalysisCoreData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C80D5B422E519D700D70497 /* TaskAnalysisCoreData+CoreDataClass.swift */; };
 		9C84720522CE3ECA008BE2D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84720422CE3ECA008BE2D8 /* AppDelegate.swift */; };
 		9C84720722CE3ECA008BE2D8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C84720622CE3ECA008BE2D8 /* MainViewController.swift */; };
 		9C84720A22CE3ECA008BE2D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C84720822CE3ECA008BE2D8 /* Main.storyboard */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		9C19EF8022E26E60003B3061 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		9C3EEAB122D534ED00032658 /* AddTaskAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskAnalysisViewController.swift; sourceTree = "<group>"; };
+		9C7871562302F32B007DF1B3 /* TaskAnalysisCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskAnalysisCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C80D5B222E4B59100D70497 /* ActionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTableViewController.swift; sourceTree = "<group>"; };
+		9C80D5B422E519D700D70497 /* TaskAnalysisCoreData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskAnalysisCoreData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		9C84720122CE3ECA008BE2D8 /* Task Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C84720422CE3ECA008BE2D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C84720622CE3ECA008BE2D8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -66,12 +72,15 @@
 				9C9CEB9122D2967A00E68837 /* TaskAnalysis.swift */,
 				9C84720622CE3ECA008BE2D8 /* MainViewController.swift */,
 				9C3EEAB122D534ED00032658 /* AddTaskAnalysisViewController.swift */,
-				9C19EF8022E26E60003B3061 /* ActionViewController.swift */,
+				9C80D5B222E4B59100D70497 /* ActionTableViewController.swift */,
 				9C84720822CE3ECA008BE2D8 /* Main.storyboard */,
 				9C84720E22CE3ECB008BE2D8 /* Assets.xcassets */,
+				9C19EF8022E26E60003B3061 /* ActionViewController.swift */,
 				9C84721022CE3ECB008BE2D8 /* LaunchScreen.storyboard */,
 				9C84721322CE3ECB008BE2D8 /* Info.plist */,
 				9C84720B22CE3ECA008BE2D8 /* Task_Analysis.xcdatamodeld */,
+				9C80D5B422E519D700D70497 /* TaskAnalysisCoreData+CoreDataClass.swift */,
+				9C7871562302F32B007DF1B3 /* TaskAnalysisCoreData+CoreDataProperties.swift */,
 			);
 			path = "Task Analysis";
 			sourceTree = "<group>";
@@ -148,8 +157,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C9CEB9222D2967A00E68837 /* TaskAnalysis.swift in Sources */,
+				9C80D5B622E519D700D70497 /* TaskAnalysisCoreData+CoreDataClass.swift in Sources */,
 				9C84720722CE3ECA008BE2D8 /* MainViewController.swift in Sources */,
+				9C7871572302F32B007DF1B3 /* TaskAnalysisCoreData+CoreDataProperties.swift in Sources */,
 				9C19EF8122E26E60003B3061 /* ActionViewController.swift in Sources */,
+				9C80D5B322E4B59100D70497 /* ActionTableViewController.swift in Sources */,
 				9C3EEAB222D534ED00032658 /* AddTaskAnalysisViewController.swift in Sources */,
 				9C84720522CE3ECA008BE2D8 /* AppDelegate.swift in Sources */,
 				9C84720D22CE3ECA008BE2D8 /* Task_Analysis.xcdatamodeld in Sources */,
