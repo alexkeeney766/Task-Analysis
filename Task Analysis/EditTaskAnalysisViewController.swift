@@ -1,35 +1,29 @@
 //
-//  AddTaskAnalysisViewController1.swift
+//  EditTaskAnalysisViewController.swift
 //  Task Analysis
 //
-//  Created by Alexander Keeney on 8/13/19.
+//  Created by Alexander Keeney on 8/25/19.
 //  Copyright © 2019 Alexander Keeney. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-
-
-class AddTaskAnalysisViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditTaskAnalysisViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var previousVC = MainViewController()
-    var stepCounter: Int = 1
-    var currentButtonIdx : Int = 0
-    var currentImage = UIImage()
-    var stepImages = [Data](repeating: Data(), count: 15)
     var currentButton = UIButton()
+    var selectedTaskAnalysis : TaskAnalysis?
+    var stepCounter = 1
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTestField: UITextField!
     @IBOutlet weak var nextStepHighlightedToggle: UISwitch!
-    @IBOutlet weak var skippedStepsHighlightedToggle: UISwitch!
+    @IBOutlet weak var skippedStepHighlightedToggle: UISwitch!
+    @IBOutlet weak var scrollView: UIScrollView!
     var stepStackView = UIStackView()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stepImages.reserveCapacity(15)
         
         // Creating initial layout
         stepStackView.axis = .vertical
@@ -47,52 +41,12 @@ class AddTaskAnalysisViewController: UIViewController, UIImagePickerControllerDe
             stepStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             // Prohibiting horizontal scrolling
             stepStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-        ])
+            ])
         
-        addStep()
+        
     }
-    
-    
-    @IBAction func addStepTapped(_ sender: Any) {
-        addStep()
-    }
-    
-    
-    @IBAction func doneTapped(_ sender: Any) {
-        var taskAnalysis : TaskAnalysis
-        if let taskTitle = titleTextField.text {
-            if taskTitle != "" {
-                taskAnalysis = newTask(title: taskTitle, nextStep: nextStepHighlightedToggle.isOn, skippedStep: skippedStepsHighlightedToggle.isOn)
-                for cell in stepStackView.subviews {
-                    
-                    let stepTextField = (cell.subviews[2] as? UITextField)
-                    let stepButton = (cell.subviews[1] as? UIButton)
-                    if let text = stepTextField?.text {
-                        if let pic = stepButton?.backgroundImage(for: .normal) {
-                            taskAnalysis.addToSteps(newStep(task: taskAnalysis, text: text, pic: pic))
-                        } else {
 
-                            taskAnalysis.addToSteps(newStep(task: taskAnalysis, text: text, pic: UIImage()))
-                        }
-                    } else {
-                        taskAnalysis.addToSteps(newStep(task: taskAnalysis, text: "Empty Step", pic: UIImage()))
-                    }
-                }
-            } else {
-                let ac = UIAlertController(title: "Please Enter a Title",
-                message: "Titles are required for the application to function correctly. ", preferredStyle: .actionSheet)
-                ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-                ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-                present(ac, animated: true)
-                return
-            }
-        }
-        
-        previousVC.saveContext()
-        previousVC.loadData()
-        previousVC.tableView.reloadData()
-        navigationController?.popViewController(animated: true)
-    }
+    
     
     
     // Helper Functions
@@ -122,14 +76,14 @@ class AddTaskAnalysisViewController: UIViewController, UIImagePickerControllerDe
         button.addTarget(self, action: #selector(importPicture), for: .touchUpInside)
         button.widthAnchor.constraint(equalToConstant: 100).isActive = true
         button.heightAnchor.constraint(equalToConstant: 100).isActive = true
-    
+        
         //      : text Field
         let stepTextField = UITextField()
         stepTextField.placeholder = "Enter Step Here"
         stepTextField.borderStyle = .roundedRect
         stepTextField.autocorrectionType = .yes
         stepTextField.widthAnchor.constraint(greaterThanOrEqualToConstant: 480).isActive = true
-
+        
         // Add subviews
         cell.addArrangedSubview(label)
         cell.addArrangedSubview(button)
@@ -138,7 +92,7 @@ class AddTaskAnalysisViewController: UIViewController, UIImagePickerControllerDe
         stepStackView.addArrangedSubview(cell)
         
         stepCounter += 1
-
+        
     }
     
     @objc func importPicture(sender: UIButton) {
@@ -151,40 +105,16 @@ class AddTaskAnalysisViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info[.editedImage] as? UIImage else { return }
-//        guard let image = info[U]
-
-        print(image.imageOrientation.rawValue)
-        
-        stepImages[currentButtonIdx] = image.pngData() ?? Data()
+        guard let image = info[.originalImage] as? UIImage else { return }
         
         currentButton.setBackgroundImage(image, for: .normal)
         currentButton.setTitle("", for: .normal)
         dismiss(animated: true, completion: nil)
     }
-
-    @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
     
-    func newTask(title: String, nextStep: Bool, skippedStep: Bool) -> TaskAnalysis{
-        let taskAnalysis = TaskAnalysis(context: previousVC.container.viewContext)
-        taskAnalysis.name = title
-        taskAnalysis.nextStepHighlighted = nextStep
-        taskAnalysis.skippedStepHighlighted = skippedStep
-        return taskAnalysis
-    }
-    
-    func newStep(task: TaskAnalysis, text: String, pic: UIImage) -> Step {
-        let step = Step(context: previousVC.container.viewContext)
-        step.title = text
-        if let data = pic.pngData() as NSData? {
-            step.image = data
-        }
-        step.finished = false
-        step.task = task
-        return step
-    }
 }

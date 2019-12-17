@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="StepsCoreData" representedClassName="StepsCoreData" parentEntity="TaskAnalysisCoreData" syncable="YES" codeGenerationType="class"/>
-    <entity name="TaskAnalysisCoreData" representedClassName="TaskAnalysisCoreData" syncable="YES">
-        <attribute name="name" attributeType="String" syncable="YES"/>
+    <entity name="Step" representedClassName="Step" syncable="YES">
+        <attribute name="finished" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskAnalysis" inverseName="steps" inverseEntity="TaskAnalysis" syncable="YES"/>
+    </entity>
+    <entity name="TaskAnalysis" representedClassName="TaskAnalysis" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString="deleteMe" syncable="YES"/>
         <attribute name="nextStepHighlighted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="skippedStepHighlighted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="stepPhotos" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="steps" attributeType="Transformable" syncable="YES"/>
+        <relationship name="steps" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Step" inverseName="task" inverseEntity="Step" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -14,7 +18,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="StepsCoreData" positionX="-54" positionY="18" width="128" height="45"/>
-        <element name="TaskAnalysisCoreData" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Step" positionX="-63" positionY="18" width="128" height="105"/>
+        <element name="TaskAnalysis" positionX="228.55859375" positionY="-11.3125" width="128" height="105"/>
     </elements>
 </model>
