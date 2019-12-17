@@ -90,7 +90,6 @@ class ActionViewController: UIViewController {
         
         //      : Image
         let pic = UIImageView()
-//        var img : UIImage
         if let data = taskStep.image as Data? {
             if let img = UIImage(data: data) {
                 if (img.imageOrientation == .up) {
@@ -110,7 +109,6 @@ class ActionViewController: UIViewController {
             }
         }
         
-//        pic.image = UIImage(data: taskStep.image as Data)
         pic.widthAnchor.constraint(equalToConstant: 200).isActive = true
         pic.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
@@ -119,9 +117,6 @@ class ActionViewController: UIViewController {
         label.text = taskStep.title
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
-//        label.widthAnchor.constraint(lessThanOrEqualToConstant: 400)
-//        label.widthAnchor.constraint(greaterThanOrEqualToConstant: 100)
-//        label.heightAnchor.constraint(lessThanOrEqualToConstant: 150)
         
         //      : Complete BUtton
         let button = UIButton(type: .system)

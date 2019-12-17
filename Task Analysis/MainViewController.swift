@@ -12,9 +12,6 @@ import CoreData
 class MainViewController: UITableViewController {
     
     // Properties and Variables
-//    var appDelegate = UIApplication.shared.delegate as! AppDelegate
-//    private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var container: NSPersistentContainer!
     var taskAnalyses : [TaskAnalysis] = []
     var allSteps : [Step] = []
@@ -124,17 +121,6 @@ class MainViewController: UITableViewController {
         var taskAnalysis = TaskAnalysis(context: container.viewContext)
         taskAnalysis = taskAnalyses[indexPath.row]
         performSegue(withIdentifier: "Action", sender: taskAnalysis)
-//        if let actionVC = storyboard?.instantiateViewController(withIdentifier: "Action") as? ActionViewController {
-//            actionVC.selectedTaskAnalysis = taskAnalysis
-//            actionVC.previousVC = self
-//
-//            let steps = taskAnalysis.steps.objectEnumerator()
-//            for step in steps {
-//                actionVC.taskSteps.append(step as! Step)
-//            }
-////            actionVC.skippedStepHighlighted = ta
-//            navigationController?.pushViewController(actionVC, animated: true)
-//        }
         
     }
     
@@ -148,7 +134,6 @@ class MainViewController: UITableViewController {
             
             let indexPath = tableView.indexPathForSelectedRow!
             let taskAnalysis = taskAnalyses[indexPath.row]
-//            actionVC.selectedTaskAnalysis = sender as? TaskAnalysis
             actionVC.previousVC = self
             actionVC.nextStepHighlighted = taskAnalysis.nextStepHighlighted
             actionVC.skippedStepHighlighted = taskAnalysis.skippedStepHighlighted

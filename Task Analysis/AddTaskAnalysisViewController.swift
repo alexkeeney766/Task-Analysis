@@ -151,9 +151,7 @@ class AddTaskAnalysisViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
-//        guard let image = info[U]
 
         print(image.imageOrientation.rawValue)
         
